@@ -1,0 +1,8 @@
+{
+  "name": "charityBox",
+  "app_id": "59807386",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
