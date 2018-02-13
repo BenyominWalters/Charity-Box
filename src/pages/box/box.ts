@@ -35,7 +35,7 @@ export class BoxPage {
       db.executeSql('INSERT INTO charity VALUES(NULL,?)',[this.data.amount])
         .then(res => {
           console.log(res);
-          this.toast.show('Donation Saved!', '5000', 'center').subscribe(
+          this.toast.show(`Donation Saved!`, '5000', 'center').subscribe(
             toast => {
               this.navCtrl.popToRoot();
             }
