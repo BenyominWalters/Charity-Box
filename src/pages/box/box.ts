@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { CurrencyPipe } from '@angular/common';
+//import { CurrencyPipe } from '@angular/common';
 
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 import { Toast } from '@ionic-native/toast';
@@ -13,6 +13,7 @@ import { Toast } from '@ionic-native/toast';
 export class BoxPage {
 
   data = { amount:0 };
+  total = 0;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -22,21 +23,19 @@ export class BoxPage {
   setInput(amt: number) {
     this.data.amount = amt + this.data.amount;
   }
-  saveData(){
-    console.log(this.data);
-    this.data.amount=0
 
-  }
-}
-  /*saveData() {
+  saveData() {
+    console.log(this.data);
+    this.total = this.total + this.data.amount;
+    this.data.amount=0;
     this.sqlite.create({
       name: 'ionicdb.db',
       location: 'default'
     }).then((db: SQLiteObject) => {
-      db.executeSql('INSERT INTO expense VALUES(NULL,?)',[this.data.amount])
+      db.executeSql('INSERT INTO charity VALUES(NULL,?)',[this.data.amount])
         .then(res => {
           console.log(res);
-          this.toast.show('Data saved', '5000', 'center').subscribe(
+          this.toast.show('Donation Saved!', '5000', 'center').subscribe(
             toast => {
               this.navCtrl.popToRoot();
             }
@@ -59,4 +58,5 @@ export class BoxPage {
       );
     });
   }
-*/
+
+}

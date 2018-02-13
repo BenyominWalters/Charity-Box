@@ -1,6 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { CurrencyPipe } from '@angular/common';
+//import { CurrencyPipe } from '@angular/common';
 
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { SQLite } from '@ionic-native/sqlite';
@@ -40,7 +40,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    CurrencyPipe,
+    //CurrencyPipe,
     SQLite,
     Toast
   ]
