@@ -1,15 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
-import { AddDataPage } from '../add-data/add-data';
-import { EditDataPage } from '../edit-data/edit-data';
-
-/**
- * Generated class for the BoxPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { BoxPage } from '../box/box';
 
 @IonicPage()
 @Component({
@@ -42,14 +34,14 @@ export class HistoryPage {
       name: 'ionicdb.db',
       location: 'default'
     }).then((db: SQLiteObject) => {
-      db.executeSql('CREATE TABLE IF NOT EXISTS expense(rowid INTEGER PRIMARY KEY, date TEXT, type TEXT, description TEXT, amount INT)', {})
+      db.executeSql('CREATE TABLE IF NOT EXISTS expense(rowid INTEGER PRIMARY KEY, amount INT)', {})
       .then(res => console.log('Executed SQL'))
       .catch(e => console.log(e));
       db.executeSql('SELECT * FROM expense ORDER BY rowid DESC', {})
       .then(res => {
         this.expenses = [];
         for(var i=0; i<res.rows.length; i++) {
-          this.expenses.push({rowid:res.rows.item(i).rowid,date:res.rows.item(i).date,type:res.rows.item(i).type,description:res.rows.item(i).description,amount:res.rows.item(i).amount})
+          this.expenses.push({rowid:res.rows.item(i).rowid,amount:res.rows.item(i).amount})
         }
       })
       .catch(e => console.log(e));
@@ -72,13 +64,7 @@ export class HistoryPage {
   }
 
   addData() {
-    this.navCtrl.push(AddDataPage);
-  }
-
-  editData(rowid) {
-    this.navCtrl.push(EditDataPage, {
-      rowid:rowid
-    });
+    this.navCtrl.push(BoxPage);
   }
 
   deleteData(rowid) {

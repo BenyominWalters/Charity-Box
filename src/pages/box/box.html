@@ -1,32 +1,39 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>My Expense</ion-title>
+    <ion-title>Charity Box</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding>
-  <h2>Add Data</h2>
+  <h2>Add Money To Your Box!</h2>
+
+  <button ion-button icon-end (click)="setInput(.01)">
+    $.01
+    <ion-icon name="cash"></ion-icon>
+  </button>
+
+  <button ion-button icon-end (click)="setInput(.05)">
+    $.05
+    <ion-icon name="cash"></ion-icon>
+  </button>
+
+  <button ion-button icon-end (click)="setInput(.25)">
+    $.25
+    <ion-icon name="cash"></ion-icon>
+  </button>
+
+  <button ion-button icon-end (click)="setInput(1)">
+    $1
+    <ion-icon name="cash"></ion-icon>
+  </button>
+
   <form (ngSubmit)="saveData()">
     <ion-item>
-      <ion-label>Date</ion-label>
-      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="data.date" name="date" required=""></ion-datetime>
-    </ion-item>
-    <ion-item>
-      <ion-label>Type</ion-label>
-      <ion-select [(ngModel)]="data.type" name="type" required="">
-        <ion-option value="Income">Income</ion-option>
-        <ion-option value="Expense">Expense</ion-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label>Description</ion-label>
-      <ion-input type="text" placeholder="Description" [(ngModel)]="data.description" name="description" required="" ></ion-input>
-    </ion-item>
-    <ion-item>
       <ion-label>Amount</ion-label>
-      <ion-input type="number" placeholder="Amount" [(ngModel)]="data.amount" name="amount" required="" ></ion-input>
-    </ion-item>
-    <button ion-button type="submit" block>Save Data</button>
+      <ion-input type="number" placeholder="" (ngModelChange)="data.amount=$event"[ngModel]="data.amount" name="amount" required="" ></ion-input>
+  </ion-item>
+  <button ion-button type="submit" block>Sumbit</button>
   </form>
+
 </ion-content>
