@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
+
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
+//import { Storage } from '@ionic/storage';
+
 import { BoxPage } from '../box/box';
 
 @IonicPage()
@@ -10,16 +13,16 @@ import { BoxPage } from '../box/box';
 })
 export class HistoryPage {
 
-  expenses: any = []; //charity
-  totalIncome = 0; //total put in charity box
-  totalExpense = 0; //total donated from charity box
-  balance = 0; //current amount in charity box
+  gifts: any = []; //charity
+  totalCharity: number = 0; //total put in charity box
+  totalDonated: number = 0; //total donated from charity box
+  boxValue: number = 0; //current amount in charity box
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private sqlite: SQLite) {
-  }
+    private sqlite: SQLite,){}
+
 
   ionViewDidLoad() {
     this.getData();
@@ -34,30 +37,31 @@ export class HistoryPage {
       name: 'ionicdb.db',
       location: 'default'
     }).then((db: SQLiteObject) => {
-      db.executeSql('CREATE TABLE IF NOT EXISTS expense(rowid INTEGER PRIMARY KEY, amount INT)', {})
+      db.executeSql('CREATE TABLE IF NOT EXISTS gift(rowid INTEGER PRIMARY KEY, type TEXT, amount INT)', {})
       .then(res => console.log('Executed SQL'))
       .catch(e => console.log(e));
-      db.executeSql('SELECT * FROM expense ORDER BY rowid DESC', {})
+      db.executeSql('SELECT * FROM gift ORDER BY rowid DESC', {})
       .then(res => {
-        this.expenses = [];
+        this.gifts = [];
         for(var i=0; i<res.rows.length; i++) {
-          this.expenses.push({rowid:res.rows.item(i).rowid,amount:res.rows.item(i).amount})
+          this.gifts.push({rowid:res.rows.item(i).rowid,type:res.rows.item(i).type,amount:res.rows.item(i).amount})
         }
       })
       .catch(e => console.log(e));
-      db.executeSql('SELECT SUM(amount) AS totalIncome FROM expense WHERE type="Income"', {})
+      db.executeSql('SELECT SUM(amount) AS totalCharity FROM gift WHERE type="Charity"', {})
       .then(res => {
         if(res.rows.length>0) {
-          this.totalIncome = parseInt(res.rows.item(0).totalIncome);
-          this.balance = this.totalIncome-this.totalExpense;
+          this.totalCharity = parseInt(res.rows.item(0).totalIncome);
+          this.boxValue = this.totalCharity-this.totalDonated;
+          console.log("----" + this.totalCharity + "----")
         }
       })
       .catch(e => console.log(e));
-      db.executeSql('SELECT SUM(amount) AS totalExpense FROM expense WHERE type="Expense"', {})
+      db.executeSql('SELECT SUM(amount) AS totalDonated FROM gift WHERE type="Donation"', {})
       .then(res => {
         if(res.rows.length>0) {
-          this.totalExpense = parseInt(res.rows.item(0).totalExpense);
-          this.balance = this.totalIncome-this.totalExpense;
+          this.totalDonated = parseInt(res.rows.item(0).totalDonated);
+          this.boxValue = this.totalCharity-this.totalDonated;
         }
       })
     }).catch(e => console.log(e));
@@ -72,7 +76,7 @@ export class HistoryPage {
       name: 'ionicdb.db',
       location: 'default'
     }).then((db: SQLiteObject) => {
-      db.executeSql('DELETE FROM expense WHERE rowid=?', [rowid])
+      db.executeSql('DELETE FROM gift WHERE rowid=?', [rowid])
       .then(res => {
         console.log(res);
         this.getData();

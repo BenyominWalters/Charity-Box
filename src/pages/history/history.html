@@ -1,28 +1,19 @@
 <ion-header>
-  <ion-navbar>
     <ion-title>
       History
     </ion-title>
-    <ion-buttons end>
-      <button ion-button icon-only (click)="addData()">
-        <ion-icon name="add-circle"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-navbar>
-</ion-header>
+  </ion-header>
 
 <ion-content padding>
   <h2>My Charity History</h2>
   <ion-list>
-    <ion-item-sliding *ngFor="let expense of expenses; let i=index">
+    <ion-item-sliding *ngFor="let gift of gifts; let i=index">
       <ion-item nopadding>
         <p>
-          <span>{{expense.date}}</span><br>
+          <br>
           Type: {{expense.type}}<br>
-          {{expense.description}}
-        </p>
         <h3 item-end>
-          Amount: ${{expense.amount}}
+          Amount: ${{gift.amount}}
         </h3>
       </ion-item>
       <ion-item-options side="right">
@@ -38,6 +29,6 @@
 </ion-content>
 <ion-footer>
   <ion-toolbar>
-    <ion-title>Balance: ${{balance}}</ion-title>
+    <ion-title>Box Value: ${{boxValue}}</ion-title>
   </ion-toolbar>
 </ion-footer>
