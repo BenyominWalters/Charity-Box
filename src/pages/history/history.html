@@ -4,31 +4,26 @@
     </ion-title>
   </ion-header>
 
-<ion-content padding>
-  <h2>My Charity History</h2>
-  <ion-list>
-    <ion-item-sliding *ngFor="let gift of gifts; let i=index">
-      <ion-item nopadding>
-        <p>
-          <br>
-          Type: {{expense.type}}<br>
-        <h3 item-end>
-          Amount: ${{gift.amount}}
-        </h3>
-      </ion-item>
-      <ion-item-options side="right">
-        <button ion-button color="primary" (click)="editData(expense.rowid)">
-          <ion-icon name="paper"></ion-icon>
-        </button>
-        <button ion-button color="danger" (click)="deleteData(expense.rowid)">
-          <ion-icon name="trash"></ion-icon>
-        </button>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-list>
-</ion-content>
+  <ion-content padding>
+    <h2>My Charity History</h2>
+    <ion-list *ngIf = 'gifts'>
+      <ion-item-sliding *ngFor="let gift of gifts; let i=index">
+        <ion-item nopadding>
+          <p>
+            {{gift.id}}
+            Type: {{gift.type}}<br>
+          </p>
+          <h3 item-end>
+            Amount: ${{gift.amount}}
+          </h3>
+        </ion-item>
+      </ion-item-sliding>
+    </ion-list>
+  </ion-content>
+
 <ion-footer>
-  <ion-toolbar>
+<!--  <ion-toolbar>
     <ion-title>Box Value: ${{boxValue}}</ion-title>
   </ion-toolbar>
+-->
 </ion-footer>

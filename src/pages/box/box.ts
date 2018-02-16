@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
-import { Toast } from '@ionic-native/toast';
+//import { Toast } from '@ionic-native/toast';
 
 @IonicPage()
 @Component({
@@ -12,51 +12,35 @@ import { Toast } from '@ionic-native/toast';
 export class BoxPage {
 
   data = { type:"", amount: 0 };
-  total = 0;
+//  total = 0;
 
-  constructor(public navCtrl: NavController,
+  constructor(
+    public navCtrl: NavController,
     public navParams: NavParams,
-    private sqlite: SQLite,
-    private toast: Toast){}
+    //private toast: Toast,
+    private sqlite: SQLite){}
 
-  setInput(amt: number) {
-    this.data.amount = amt + this.data.amount;
-    this.data.type = 'Charity';
-  }
 
-  saveData() {
-    console.log(this.data.amount);
-    this.total = this.total + this.data.amount;
-    this.data.amount=0;
-    this.sqlite.create({
-      name: 'ionicdb.db',
-      location: 'default'
-    }).then((db: SQLiteObject) => {
-      db.executeSql('INSERT INTO charity VALUES(NULL,?,?)',[this.data.type,this.data.amount,])
-        .then(res => {
-          console.log(res);
-          this.toast.show(`Donation Saved!`, '5000', 'center').subscribe(
-            toast => {
-              this.navCtrl.popToRoot();
-            }
-          );
-        })
-        .catch(e => {
-          console.log(e);
-          this.toast.show(e, '5000', 'center').subscribe(
-            toast => {
-              console.log(toast);
-            }
-          );
-        });
-    }).catch(e => {
-      console.log(e);
-      this.toast.show(e, '5000', 'center').subscribe(
-        toast => {
-          console.log(toast);
-        }
-      );
-    });
-  }
+    setInput(amt: number) {
+      this.data.amount = amt + this.data.amount;
+      }
+
+    saveData() {
+      this.sqlite.create({
+        name: 'data.db',
+        location: 'default'
+      }).then((db: SQLiteObject) => {
+        db.executeSql('INSERT INTO account VALUES(NULL,"deposit",?)',[this.data.amount])
+          .then(res => {
+            console.log(res);
+            })
+          .catch(e => {
+            console.log(e);
+          });
+      }).catch(e => {
+        console.log(e);
+      });
+      this.data.amount = 0;
+    }
 
 }
