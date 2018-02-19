@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { EditDataPage } from '../edit-data/edit-data';
 import { SqliteProvider } from '../../providers/sqlite/sqlite';
 
 @IonicPage()
@@ -20,5 +21,13 @@ export class HistoryPage {
     ionViewWillEnter() {
       this.sqliteProvider.load();
     }
+
+    editData(event, id){
+      this.navCtrl.push(EditDataPage, {id:id});
+    }
+
+    deleteData(id){
+      this.sqliteProvider.deleteData(id);
+    };
 
 }

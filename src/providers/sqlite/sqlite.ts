@@ -8,7 +8,7 @@ export class SqliteProvider {
 //  totalCharity: number = 0; //total put in charity box
 //  totalDonated: number = 0; //total donated from charity box
 //  boxValue: number = 0; //current amount in charity box
-    public data = { type:"", amount: 0 };
+    public data = { id: "", type:"", amount: 0 };
     public total = 0;
 
   constructor(public sqlite: SQLite) {
@@ -70,18 +70,46 @@ export class SqliteProvider {
     });
   }
 
-  deleteData(rowid) {
+  deleteData(id) {
     this.sqlite.create({
-      name: 'ionicdb.db',
+      name: 'data.db',
       location: 'default'
     }).then((db: SQLiteObject) => {
-      db.executeSql('DELETE FROM account WHERE rowid=?', [rowid])
+      db.executeSql('DELETE FROM account WHERE id=?', [id])
       .then(res => {
         console.log(res);
+        this.boxTotal();
         this.load();
       })
-      .catch(e => console.log(e));
+      .catch(e => console.log(JSON.stringify(e) + 'delete failed!!!'));
     }).catch(e => console.log(e));
+  }
+
+  getCurrentData(id) {
+    this.sqlite.create({
+      name: 'data.db',
+      location: 'default'
+    }).then((db: SQLiteObject) => {
+      db.executeSql('SELECT * FROM account WHERE id=?', [id])
+      .then(res => {
+        if(res.rows.length > 0) {
+          this.data.id = res.rows.item(0).id;
+          this.data.type = res.rows.item(0).type;
+          this.data.amount = res.rows.item(0).amount;
+        }
+      })
+    })
+  }
+
+  updateData(id) {
+    this.sqlite.create({
+      name: 'data.db',
+      location: 'default'
+    }).then((db: SQLiteObject) => {
+      db.executeSql('UPDATE account SET amount=? WHERE id=?', [this.data.amount,this.data.id])
+      .then(res => {
+      })
+    })
   }
 
 }

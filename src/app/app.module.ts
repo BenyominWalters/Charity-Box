@@ -12,6 +12,7 @@ import { BoxPage } from '../pages/box/box';
 import { SettingsPage } from '../pages/settings/settings';
 import { HistoryPage } from '../pages/history/history';
 import { TabsPage } from '../pages/tabs/tabs';
+import { EditDataPage } from '../pages/edit-data/edit-data';
 
 import { SqliteProvider } from '../providers/sqlite/sqlite';
 
@@ -21,7 +22,8 @@ import { SqliteProvider } from '../providers/sqlite/sqlite';
     BoxPage,
     SettingsPage,
     HistoryPage,
-    TabsPage
+    TabsPage,
+    EditDataPage
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,8 @@ import { SqliteProvider } from '../providers/sqlite/sqlite';
     BoxPage,
     SettingsPage,
     HistoryPage,
-    TabsPage
+    TabsPage,
+    EditDataPage
   ],
   providers: [
     StatusBar,
