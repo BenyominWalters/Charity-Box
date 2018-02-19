@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-//import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
-//import { Toast } from '@ionic-native/toast';
+import { Toast } from '@ionic-native/toast';
 
 import { SqliteProvider } from '../../providers/sqlite/sqlite';
 
@@ -16,6 +14,7 @@ export class BoxPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
+    private toast: Toast,
     public sqliteProvider: SqliteProvider){
     this.boxTotal();
   }
@@ -25,6 +24,11 @@ export class BoxPage {
       }
     saveData(){
       this.sqliteProvider.saveData();
+      this.toast.show('Added to Box!', '5000', 'center').subscribe(
+        toast => {
+          console.log(toast);
+        }
+      );
     }
 
     boxTotal(){

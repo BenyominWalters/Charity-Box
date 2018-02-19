@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-//import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
-//import { Storage } from '@ionic/storage';
 
 import { SqliteProvider } from '../../providers/sqlite/sqlite';
 
@@ -18,6 +15,10 @@ export class HistoryPage {
     public navParams: NavParams,
     public sqliteProvider: SqliteProvider){
     this.sqliteProvider.load();
+    }
+
+    ionViewWillEnter() {
+      this.sqliteProvider.load();
     }
 
     doRefresh(refresher) {

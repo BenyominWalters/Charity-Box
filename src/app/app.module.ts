@@ -5,7 +5,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SQLite } from '@ionic-native/sqlite';
-//import { Toast } from '@ionic-native/toast';
+import { Toast } from '@ionic-native/toast';
 
 import { MyApp } from './app.component';
 import { BoxPage } from '../pages/box/box';
@@ -40,7 +40,7 @@ import { SqliteProvider } from '../providers/sqlite/sqlite';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SQLite,
-    //Toast,
+    Toast,
     SqliteProvider
   ]
 })

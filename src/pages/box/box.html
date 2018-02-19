@@ -40,9 +40,9 @@
         required="" >
       </ion-input>
   </ion-item>
-  <button ion-button type="submit" block>Sumbit</button>
+  <button ion-button type="submit" block>Give!</button>
   </form>
 
-<div class="total">{{ sqliteProvider.total }}</div>
+<div class="total">{{ sqliteProvider.total | number : '1.2-2' }}</div>
 
 </ion-content>
