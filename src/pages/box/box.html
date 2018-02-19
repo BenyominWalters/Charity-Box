@@ -31,7 +31,7 @@
   <form (ngSubmit)="saveData()">
     <ion-item>
       <ion-label>Amount</ion-label>
-      <ion-input type="number" placeholder="" (ngModelChange)="data.amount=$event"[ngModel]="data.amount" name="amount" required="" ></ion-input>
+      <ion-input type="number" placeholder="" (ngModelChange)="data.amount=$event"[ngModel]="data.amount | number : '1.2-2'" name="amount" required="" ></ion-input>
   </ion-item>
   <button ion-button type="submit" block>Sumbit</button>
   </form>
