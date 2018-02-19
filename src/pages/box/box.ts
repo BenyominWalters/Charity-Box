@@ -30,8 +30,9 @@ export class BoxPage {
         name: 'data.db',
         location: 'default'
       }).then((db: SQLiteObject) => {
-        db.executeSql('INSERT INTO account VALUES(NULL,"deposit",?)',[this.data.amount])
+        db.executeSql('INSERT INTO account VALUES(NULL,"deposit",round(?,2))',[this.data.amount])
           .then(res => {
+            this.data.amount = 0;
             console.log(res);
             })
           .catch(e => {
@@ -40,7 +41,7 @@ export class BoxPage {
       }).catch(e => {
         console.log(e);
       });
-      this.data.amount = 0;
+
     }
 
 }
