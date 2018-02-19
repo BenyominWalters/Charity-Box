@@ -25,8 +25,8 @@
         </ion-refresher-content>
       </ion-refresher>
 
-    <ion-list *ngIf = 'gifts'>
-      <ion-item-sliding *ngFor="let gift of gifts; let i=index">
+    <ion-list *ngIf = 'sqliteProvider.gifts'>
+      <ion-item-sliding *ngFor="let gift of sqliteProvider.gifts; let i=index">
         <ion-item nopadding>
           <p>
             {{gift.id}}
