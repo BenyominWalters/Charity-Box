@@ -21,14 +21,4 @@ export class HistoryPage {
       this.sqliteProvider.load();
     }
 
-    doRefresh(refresher) {
-        console.log('Begin async operation', refresher);
-
-        setTimeout(() => {
-          this.sqliteProvider.load();
-          console.log('Async operation has ended');
-          refresher.complete();
-        }, 2000);
-      }
-
 }

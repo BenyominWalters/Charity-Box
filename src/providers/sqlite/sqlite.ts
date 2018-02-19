@@ -70,4 +70,18 @@ export class SqliteProvider {
     });
   }
 
+  deleteData(rowid) {
+    this.sqlite.create({
+      name: 'ionicdb.db',
+      location: 'default'
+    }).then((db: SQLiteObject) => {
+      db.executeSql('DELETE FROM account WHERE rowid=?', [rowid])
+      .then(res => {
+        console.log(res);
+        this.load();
+      })
+      .catch(e => console.log(e));
+    }).catch(e => console.log(e));
+  }
+
 }

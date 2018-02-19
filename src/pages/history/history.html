@@ -7,23 +7,7 @@
   <ion-content padding>
 
 <h2>My Charity History</h2>
-      <ion-refresher (ionRefresh)="doRefresh($event)">
-        <ion-refresher-content>
-          <ion-list *ngIf = 'gifts'>
-            <ion-item-sliding *ngFor="let gift of gifts; let i=index">
-              <ion-item nopadding>
-                <p>
-                  {{gift.id}}
-                  Type: {{gift.type}}<br>
-                </p>
-                <h3 item-end>
-                  Amount: ${{gift.amount}}
-                </h3>
-              </ion-item>
-            </ion-item-sliding>
-          </ion-list>
-        </ion-refresher-content>
-      </ion-refresher>
+<ion-title>Total Donations!: ${{ sqliteProvider.total | number : '1.2-2' }}</ion-title>
 
     <ion-list *ngIf = 'sqliteProvider.gifts'>
       <ion-item-sliding *ngFor="let gift of sqliteProvider.gifts; let i=index">
@@ -40,9 +24,6 @@
     </ion-list>
   </ion-content>
 
-<ion-footer>
-<!--  <ion-toolbar>
-    <ion-title>Box Value: ${{boxValue}}</ion-title>
-  </ion-toolbar>
--->
+<ion-footer padding>
+<h3>Those Pennies Really Add Up!</h3>
 </ion-footer>
