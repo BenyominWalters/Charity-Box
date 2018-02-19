@@ -12,13 +12,15 @@ import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 export class BoxPage {
 
   data = { type:"", amount: 0 };
-//  total = 0;
+  total = 0;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     //private toast: Toast,
-    private sqlite: SQLite){}
+    private sqlite: SQLite){
+    this.boxTotal();
+  }
 
 
     setInput(amt: number) {
@@ -34,14 +36,26 @@ export class BoxPage {
           .then(res => {
             this.data.amount = 0;
             console.log(res);
-            })
+          })
           .catch(e => {
             console.log(e);
           });
+          this.boxTotal();
       }).catch(e => {
         console.log(e);
-      });
-
+        });
     }
+
+  boxTotal() {
+    this.sqlite.create({
+      name: 'data.db',
+      location: 'default'
+    }).then((db: SQLiteObject) =>{
+    db.executeSql('SELECT SUM(amount) AS Total FROM account', {})
+      .then(res => {
+        this.total = res.rows.item(0).Total;
+      });
+    });
+  }
 
 }
