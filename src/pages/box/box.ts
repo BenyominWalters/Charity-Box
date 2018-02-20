@@ -48,7 +48,20 @@ export class BoxPage {
     }
 
     donateBox() {
-      this.sqliteProvider.donateBox();
-    } 
+      if (this.sqliteProvider.boxTotal > 18){
+        this.sqliteProvider.donateBox();
+        this.toast.show('You Donated', '5000', 'center').subscribe(
+          toast => {
+            console.log(toast);
+          }
+        );
+      }else{
+        this.toast.show(`Your Box Isn't Full`, '5000', 'center').subscribe(
+          toast => {
+            console.log(toast);
+          }
+        );
+      }
+    }
 
 }
