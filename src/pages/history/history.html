@@ -1,13 +1,16 @@
 <ion-header>
+  <ion-navbar>
     <ion-title>
       History
     </ion-title>
-  </ion-header>
+  </ion-navbar>
+</ion-header>
+
 
   <ion-content padding>
 
 <h2>My Charity History</h2>
-<ion-title>Total Donations!: ${{ sqliteProvider.total | number : '1.2-2' }}</ion-title>
+<ion-title>Total Donations: ${{ sqliteProvider.total | number : '1.2-2' }}</ion-title>
 
     <ion-list *ngIf = 'sqliteProvider.gifts'>
       <ion-item-sliding *ngFor="let gift of sqliteProvider.gifts; let i=index">

@@ -28,6 +28,18 @@
     <ion-icon name="cash"></ion-icon>
   </button>
 
+  <button ion-button icon-end (click)="setInput(5)">
+    $5
+    <ion-icon name="cash"></ion-icon>
+  </button>
+
+  <button ion-button icon-end (click)="setInput(10)">
+    $10
+    <ion-icon name="cash"></ion-icon>
+  </button>
+  
+  <button ion-button (click)="resetBox()">Reset</button>
+
   <form (ngSubmit)="saveData()">
     <ion-item>
       <ion-label>Amount $</ion-label>
@@ -39,7 +51,6 @@
         required="">
       </ion-input>
     </ion-item>
-  <button ion-button (click)="resetBox()">Reset</button>
   <button ion-button type="submit" block>Give!</button>
   </form>
 

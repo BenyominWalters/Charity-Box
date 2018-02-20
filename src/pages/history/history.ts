@@ -22,7 +22,8 @@ export class HistoryPage {
       this.sqliteProvider.load();
     }
 
-    editData(event, id){
+    editData(id){
+      console.log(id + 'history page');
       this.navCtrl.push(EditDataPage, {id:id});
     }
 

@@ -11,7 +11,7 @@ import { SqliteProvider } from '../../providers/sqlite/sqlite';
 })
 export class EditDataPage {
 
-data = { type:"", amount: 0 };
+data = { id:"", type:"", amount: 0 };
 
   constructor(
     public navCtrl: NavController,
@@ -26,8 +26,8 @@ data = { type:"", amount: 0 };
   }
 
   updateData(id) {
-    this.sqliteProvider.getCurrentData(id);
-    this.toast.show('Updated History', '5000', 'center').subscribe(
+    this.sqliteProvider.updateData(id);
+    this.toast.show('Updated Charity', '5000', 'center').subscribe(
       toast => {
         console.log(toast);
       }

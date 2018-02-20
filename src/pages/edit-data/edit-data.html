@@ -1,19 +1,19 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>My Charity</ion-title>
+    <ion-title>Edit Charity</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding>
-  <h2>Edit Gifts</h2>
+  <h2>Edit Charity</h2>
   <form (ngSubmit)="updateData()">
     <ion-item>
       <ion-label>Amount</ion-label>
-      <ion-input type="number" placeholder="Amount" [(ngModel)]="gift.amount" name="amount" required="" ></ion-input>
+      <ion-input type="number" placeholder="Amount" [(ngModel)]="sqliteProvider.data.amount" name="amount" required="" ></ion-input>
     </ion-item>
-    <ion-input type="hidden" [(ngModel)]="gift.id" name="id"></ion-input>
+    <ion-input type="hidden" [(ngModel)]="sqliteProvider.data.id" name="id"></ion-input>
     <button ion-button type="submit" block>Update Data</button>
   </form>
 </ion-content>
