@@ -19,16 +19,32 @@ export class BoxPage {
     this.boxTotal();
   }
 
+    zeroCheck(){
+      alert('test');
+    }
+
     setInput(amt: number) {
       this.sqliteProvider.data.amount = amt + this.sqliteProvider.data.amount;
       }
     saveData(){
-      this.sqliteProvider.saveData();
-      this.toast.show('Added to Box!', '5000', 'center').subscribe(
-        toast => {
-          console.log(toast);
-        }
-      );
+      if (this.sqliteProvider.data.amount > 0){
+        this.sqliteProvider.saveData();
+        this.toast.show('Added to Box!', '5000', 'center').subscribe(
+          toast => {
+            console.log(toast);
+          }
+        );
+      }else{
+        this.toast.show('Please Add Value', '5000', 'center').subscribe(
+          toast => {
+            console.log(toast);
+          }
+        );
+      }
+    }
+
+    resetBox() {
+      this.sqliteProvider.data.amount = 0
     }
 
     boxTotal(){

@@ -30,19 +30,19 @@
 
   <form (ngSubmit)="saveData()">
     <ion-item>
-      <ion-label>Amount</ion-label>
+      <ion-label>Amount $</ion-label>
       <ion-input
         type="number"
-        placeholder=""
         (ngModelChange)="sqliteProvider.data.amount=$event"
         [ngModel]="sqliteProvider.data.amount | number : '1.2-2'"
         name="amount"
-        required="" >
+        required="">
       </ion-input>
-  </ion-item>
+    </ion-item>
+  <button ion-button (click)="resetBox()">Reset</button>
   <button ion-button type="submit" block>Give!</button>
   </form>
 
-<div class="total">{{ sqliteProvider.total | number : '1.2-2' }}</div>
+<div class="total">${{ sqliteProvider.total | number : '1.2-2' }}</div>
 
 </ion-content>
