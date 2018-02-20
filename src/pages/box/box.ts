@@ -16,12 +16,8 @@ export class BoxPage {
     public navParams: NavParams,
     private toast: Toast,
     public sqliteProvider: SqliteProvider){
-    this.boxTotal();
+    this.totals();
   }
-
-    zeroCheck(){
-      alert('test');
-    }
 
     setInput(amt: number) {
       this.sqliteProvider.data.amount = amt + this.sqliteProvider.data.amount;
@@ -47,8 +43,12 @@ export class BoxPage {
       this.sqliteProvider.data.amount = 0
     }
 
-    boxTotal(){
-      this.sqliteProvider.boxTotal();
+    totals() {
+      this.sqliteProvider.totals();
     }
+
+    donateBox() {
+      this.sqliteProvider.donateBox();
+    } 
 
 }
