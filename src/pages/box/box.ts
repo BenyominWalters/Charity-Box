@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Toast } from '@ionic-native/toast';
+import { Platform } from 'ionic-angular';
 
 import { SqliteProvider } from '../../providers/sqlite/sqlite';
 
@@ -15,10 +16,10 @@ export class BoxPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private toast: Toast,
+    public plt: Platform,
     public sqliteProvider: SqliteProvider){
-    this.sqliteProvider.load();
-    this.sqliteProvider.totals();
-  }
+      this.sqliteProvider.totals();
+}
 
     ionViewWillEnter() {
       this.sqliteProvider.totals();
@@ -27,6 +28,7 @@ export class BoxPage {
     setInput(amt: number) {
       this.sqliteProvider.data.amount = amt + this.sqliteProvider.data.amount;
       }
+
     saveData(){
       if (this.sqliteProvider.data.amount > 0){
         this.sqliteProvider.saveData();
