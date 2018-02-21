@@ -10,7 +10,8 @@
   <ion-content padding>
 
 <h2>My Charity History</h2>
-<ion-title>Total Donated: ${{ sqliteProvider.donationTotal | number : '1.2-2' }}</ion-title>
+<ion-title>Box Total: ${{ sqliteProvider.boxTotal | number : '1.2-2' }}</ion-title>
+<ion-title>Donations Total: ${{ sqliteProvider.donationTotal | number : '1.2-2' }}</ion-title>
 <ion-title>Total Given: ${{ sqliteProvider.historyTotal | number : '1.2-2' }}</ion-title>
 
     <ion-list *ngIf = 'sqliteProvider.gifts'>

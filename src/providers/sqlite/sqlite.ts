@@ -128,7 +128,7 @@ export class SqliteProvider {
       name: 'data.db',
       location: 'default'
     }).then((db: SQLiteObject) => {
-      db.executeSql('INSERT INTO account VALUES(NULL,"donation",18.18)',{})
+      db.executeSql('INSERT INTO account VALUES(NULL,"donation",18.00)',{})
         .then(res => {
           this.data.amount = 0;
           console.log(res);

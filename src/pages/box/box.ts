@@ -16,8 +16,13 @@ export class BoxPage {
     public navParams: NavParams,
     private toast: Toast,
     public sqliteProvider: SqliteProvider){
-    this.totals();
+    this.sqliteProvider.load();
+    this.sqliteProvider.totals();
   }
+
+    ionViewWillEnter() {
+      this.sqliteProvider.totals();
+    }
 
     setInput(amt: number) {
       this.sqliteProvider.data.amount = amt + this.sqliteProvider.data.amount;
