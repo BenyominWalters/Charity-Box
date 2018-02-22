@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SQLite } from '@ionic-native/sqlite';
 import { Toast } from '@ionic-native/toast';
+import { PayPal } from '@ionic-native/paypal';
 
 import { MyApp } from './app.component';
 import { BoxPage } from '../pages/box/box';
@@ -13,6 +14,9 @@ import { SettingsPage } from '../pages/settings/settings';
 import { HistoryPage } from '../pages/history/history';
 import { TabsPage } from '../pages/tabs/tabs';
 import { EditDataPage } from '../pages/edit-data/edit-data';
+import { DonatePage } from '../pages/donate/donate';
+//Need??? import { Config } from '../../config'; //contains ids for Payapal on DonatePage
+
 
 import { SqliteProvider } from '../providers/sqlite/sqlite';
 
@@ -23,7 +27,8 @@ import { SqliteProvider } from '../providers/sqlite/sqlite';
     SettingsPage,
     HistoryPage,
     TabsPage,
-    EditDataPage
+    EditDataPage,
+    DonatePage
   ],
   imports: [
     BrowserModule,
@@ -36,7 +41,8 @@ import { SqliteProvider } from '../providers/sqlite/sqlite';
     SettingsPage,
     HistoryPage,
     TabsPage,
-    EditDataPage
+    EditDataPage,
+    DonatePage
   ],
   providers: [
     StatusBar,
@@ -44,6 +50,7 @@ import { SqliteProvider } from '../providers/sqlite/sqlite';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SQLite,
     Toast,
+    PayPal,
     SqliteProvider
   ]
 })

@@ -18,8 +18,7 @@ export class BoxPage {
     private toast: Toast,
     public plt: Platform,
     public sqliteProvider: SqliteProvider){
-      this.sqliteProvider.totals();
-}
+  }
 
     ionViewWillEnter() {
       this.sqliteProvider.totals();
