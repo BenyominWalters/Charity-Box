@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
 
-//import { Config } from '../../config';
-
 @IonicPage()
 @Component({
   selector: 'page-donate',
@@ -11,7 +9,7 @@ import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal
 })
 export class DonatePage {
 
-  payment: PayPalPayment = new PayPalPayment('10.10', 'USD', 'TV', 'sale');
+  payment: PayPalPayment = new PayPalPayment('18.00', 'USD', 'Charity Box App', 'donation');
   currencies = ['USD', 'EUR'];
   payPalEnvironment: any = 'payPalEnvironmentSandbox';
 
@@ -33,6 +31,7 @@ export class DonatePage {
           this.payPal.renderSinglePaymentUI(this.payment).then((response) => {
             alert(`Successfully paid. Status = ${response.response.state}`);
             console.log(response);
+            this.navCtrl.popToRoot();
 
             // Example sandbox response
             //

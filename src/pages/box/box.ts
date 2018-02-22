@@ -5,6 +5,8 @@ import { Platform } from 'ionic-angular';
 
 import { SqliteProvider } from '../../providers/sqlite/sqlite';
 
+import { DonatePage } from '../donate/donate';
+
 @IonicPage()
 @Component({
   selector: 'page-box',
@@ -61,6 +63,7 @@ export class BoxPage {
             console.log(toast);
           }
         );
+        this.navCtrl.push(DonatePage, {amount:18});
       }else{
         this.toast.show(`Your Box Isn't Full`, '5000', 'center').subscribe(
           toast => {
