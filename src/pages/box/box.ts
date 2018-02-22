@@ -26,6 +26,10 @@ export class BoxPage {
       this.sqliteProvider.totals();
     }
 
+    ionViewDidLoad(){
+      this.totals();
+    }
+
     setInput(amt: number) {
       this.sqliteProvider.data.amount = amt + this.sqliteProvider.data.amount;
       }
@@ -53,12 +57,19 @@ export class BoxPage {
 
     totals() {
       this.sqliteProvider.totals();
+      if (this.sqliteProvider.boxTotal > 18){
+        this.toast.show('Your Box is Full', '5000', 'center').subscribe(
+          toast => {
+            console.log(toast);
+          }
+        );
+      }
     }
 
     donateBox() {
       if (this.sqliteProvider.boxTotal > 18){
         this.sqliteProvider.donateBox();
-        this.toast.show('You Donated', '5000', 'center').subscribe(
+        this.toast.show('Opening Donation Page', '5000', 'center').subscribe(
           toast => {
             console.log(toast);
           }

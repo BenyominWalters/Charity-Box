@@ -53,7 +53,7 @@
     </ion-item>
   <button ion-button type="submit" block>Give</button>
   </form>
-<button ion-button block (click)="donateBox()">Donate Your Box</button>
+<button ion-button block *ngIf='this.sqliteProvider.boxTotal > 18' (click)="donateBox()">Donate Your Box</button>
 
 
 <div class="boxTotal">${{ sqliteProvider.boxTotal | number : '1.2-2' }}</div>
