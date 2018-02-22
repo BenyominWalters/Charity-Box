@@ -76,5 +76,9 @@
       "browser",
       "android"
     ]
-  }
+  },
+  "config": {
+   "ionic_copy": "./config/copy.config.js",
+   "ionic_sass": "./config/sass.config.js"
+ }
 }
