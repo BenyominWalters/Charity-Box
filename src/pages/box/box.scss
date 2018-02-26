@@ -1,3 +1,70 @@
 page-box {
 
+  $buttonColor: #4CAF50; /* Green */
+
+  #container {
+    display: flex;
+  }
+
+  #container button {
+    background-color: $buttonColor;
+    border: none;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    width: 100%;
+
+  }
+
+  #container div {
+    flex: 1;
+    width: 33%;
+    box-sizing: border-box;
+    padding: 0 5%;
+  }
+
+  #wrapper {
+      text-align: center;
+  }
+
+  #wrapper button {
+      background-color: #f44336; /* Red */
+      border: none;
+      color: white;
+      padding: 15px 20px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 16px;
+      width: 50%;
+      margin: auto;
+  }
+
+  #donateWrapper {
+      text-align: center;
+  }
+
+  #donateWrapper button {
+      background-color: #ffc438; /* Gold */
+      color: #203d7c;
+      border: none;
+      padding: 15px 20px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 16px;
+      width: 50%;
+      margin: auto;
+  }
+
+  .button {
+    background-color: $buttonColor;
+    font-size: 16px;
+  }
+
+  .boxTotal {
+    color: #203d7c;
+    text-align: center;
+  }
+
 }
