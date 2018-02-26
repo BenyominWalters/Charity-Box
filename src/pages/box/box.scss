@@ -4,6 +4,7 @@ page-box {
 
   #container {
     display: flex;
+    padding-bottom: 1em;
   }
 
   #container button {
@@ -41,13 +42,29 @@ page-box {
       margin: auto;
   }
 
+  #submit-wrapper {
+      text-align: center;
+  }
+
+  #submit-wrapper button {
+      background-color: $buttonColor;
+      border: none;
+      color: white;
+      padding: 15px 20px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 16px;
+      width: 90%;
+      margin: auto;
+  }
+
   #donateWrapper {
       text-align: center;
   }
 
   #donateWrapper button {
       background-color: #ffc438; /* Gold */
-      color: #203d7c;
+      color: black;
       border: none;
       padding: 15px 20px;
       text-align: center;
@@ -64,6 +81,10 @@ page-box {
 
   #image-wrapper box-image {
     height: 33%;
+  }
+
+  .amount {
+    width: 90%;
   }
 
   .button {

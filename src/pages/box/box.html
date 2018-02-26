@@ -29,7 +29,7 @@
       </button>
     </div>
   </div>
-      <br>
+
   <div id="container">
     <div>
       <button ion-button icon-right (click)="setInput(1)">
@@ -50,7 +50,7 @@
       </button>
     </div>
   </div>
-  <br>
+  
   <div id="wrapper">
       <button id="clearButton" ion-button block (click)="resetBox()">Clear</button>
   </div>
@@ -66,7 +66,9 @@
           required="">
         </ion-input>
       </ion-item>
-    <button ion-button type="submit" block>Give</button>
+    <div id="submit-wrapper">
+      <button ion-button type="submit" block>Give</button>
+    </div>
     </form>
 
   <div class="boxTotal">Box Total ${{ sqliteProvider.boxTotal | number : '1.2-2' }}</div>
