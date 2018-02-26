@@ -16,6 +16,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { EditDataPage } from '../pages/edit-data/edit-data';
 import { DonatePage } from '../pages/donate/donate';
 
+import { FaIconComponent } from '../components/fa-icon/fa-icon'
 import { SqliteProvider } from '../providers/sqlite/sqlite';
 
 @NgModule({
@@ -26,7 +27,8 @@ import { SqliteProvider } from '../providers/sqlite/sqlite';
     HistoryPage,
     TabsPage,
     EditDataPage,
-    DonatePage
+    DonatePage,
+    FaIconComponent
   ],
   imports: [
     BrowserModule,
