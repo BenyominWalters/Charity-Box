@@ -1,0 +1,28 @@
+<svg width="291" height="400" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+
+ <g>
+  <title>background</title>
+  <rect x="-1" y="-1" width="293" height="402" id="canvas_background" fill="#ffffff"/>
+  <g id="canvasGrid" display="none">
+   <rect id="svg_3" width="100%" height="100%" x="0" y="0" stroke-width="0" fill="url(#gridpattern)"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <rect fill="#fff" stroke="#000" stroke-width="1.5" stroke-opacity="null" fill-opacity="null" x="224" y="368" width="1" height="0" id="svg_13"/>
+  <g stroke="null" id="svg_20">
+   <ellipse stroke="#000" fill="#9e3707" stroke-width="1.5" cx="143.852949" cy="365.983968" id="svg_10" rx="138.352926" ry="28.016131"/>
+   <ellipse stroke="#000" fill="#d87f20" stroke-width="1.5" cx="143.852949" cy="348.863" id="svg_9" rx="138.352926" ry="28.016131"/>
+   <rect stroke="#000" fill="#d87f20" stroke-width="1.5" x="21.970604" y="45.354933" width="247.058812" height="303.508065" id="svg_1"/>
+   <rect stroke="#000000" fill="#cccccc" stroke-width="1.5" x="32.674657" y="66.366028" width="18.941075" height="282.49446" id="svg_14"/>
+   <rect stroke="#000000" fill="#cccccc" stroke-width="1.5" x="248.4382" y="67.922472" width="6.5882" height="275.490465" id="svg_15"/>
+   <ellipse stroke="#000" fill="#9e3707" stroke-width="1.5" cx="147.147067" cy="56.250096" id="svg_2" rx="138.352926" ry="28.016131"/>
+   <ellipse stroke="#000" fill="#9e3707" stroke-width="1.5" cx="147.147067" cy="36.016225" id="svg_4" rx="138.352926" ry="28.016131"/>
+   <rect stroke="null" fill="#d87f20" stroke-width="1.5" x="23.617669" y="336.411394" width="244.588196" height="18.677419" id="svg_12"/>
+   <ellipse stroke="#000" fill="#191919" stroke-width="1.5" stroke-opacity="null" cx="144.262291" cy="34.848051" id="svg_16" rx="56.411459" ry="4.280219"/>
+   <text stroke="null" transform="matrix(1.6470587453064796,0,0,1.5564516167325457,-195.26472412245528,-96.72585525921448) " fill="#000000" stroke-width="0" x="168.891612" y="183.284003" id="svg_18" font-size="24" font-family="Helvetica, Arial, sans-serif" text-anchor="start" xml:space="preserve" font-weight="bold">Charity</text>
+   <text stroke="null" transform="matrix(1.6470587453064796,0,0,1.5564516167325457,-195.26472412245528,-96.72585525921448) " fill="#000000" stroke-width="0" x="186.219635" y="224.783781" id="svg_19" font-size="24" font-family="Helvetica, Arial, sans-serif" text-anchor="start" xml:space="preserve" font-weight="bold">Box</text>
+  </g>
+ </g>
+</svg>

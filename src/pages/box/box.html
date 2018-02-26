@@ -8,71 +8,75 @@
 <ion-content padding>
   <h2>Add Money To Your Box</h2>
 
-<div id="container">
-  <div>
-  <button ion-button icon-right (click)="setInput(.01)">
-    $.01
-    <fa-icon name="circle"></fa-icon>
-  </button>
-  </div>
-  <div>
-    <button ion-button icon-right (click)="setInput(.05)">
-      $.05
+
+  <div id="container">
+    <div>
+    <button ion-button icon-right (click)="setInput(.01)">
+      $.01
       <fa-icon name="circle"></fa-icon>
     </button>
+    </div>
+    <div>
+      <button ion-button icon-right (click)="setInput(.05)">
+        $.05
+        <fa-icon name="circle"></fa-icon>
+      </button>
+    </div>
+    <div>
+      <button ion-button icon-right (click)="setInput(.25)">
+        $.25
+        <fa-icon name="circle"></fa-icon>
+      </button>
+    </div>
   </div>
-  <div>
-    <button ion-button icon-right (click)="setInput(.25)">
-      $.25
-      <fa-icon name="circle"></fa-icon>
-    </button>
+      <br>
+  <div id="container">
+    <div>
+      <button ion-button icon-right (click)="setInput(1)">
+        $1
+        <ion-icon name="cash"></ion-icon>
+      </button>
+    </div>
+    <div>
+      <button ion-button icon-right (click)="setInput(5)">
+        $5
+        <ion-icon name="cash"></ion-icon>
+      </button>
+    </div>
+    <div>
+      <button ion-button icon-right (click)="setInput(10)">
+        $10
+        <ion-icon name="cash"></ion-icon>
+      </button>
+    </div>
   </div>
-</div>
-    <br>
-<div id="container">
-  <div>
-    <button ion-button icon-right (click)="setInput(1)">
-      $1
-      <ion-icon name="cash"></ion-icon>
-    </button>
+  <br>
+  <div id="wrapper">
+      <button id="clearButton" ion-button block (click)="resetBox()">Clear</button>
   </div>
-  <div>
-    <button ion-button icon-right (click)="setInput(5)">
-      $5
-      <ion-icon name="cash"></ion-icon>
-    </button>
-  </div>
-  <div>
-    <button ion-button icon-right (click)="setInput(10)">
-      $10
-      <ion-icon name="cash"></ion-icon>
-    </button>
-  </div>
-</div>
-<br>
-<div id="wrapper">
-    <button id="clearButton" ion-button block (click)="resetBox()">Clear</button>
-</div>
 
-  <form (ngSubmit)="saveData()">
-    <ion-item>
-      <ion-label>Amount $</ion-label>
-      <ion-input
-        type="number"
-        (ngModelChange)="sqliteProvider.data.amount=$event"
-        [ngModel]="sqliteProvider.data.amount | number : '1.2-2'"
-        name="amount"
-        required="">
-      </ion-input>
-    </ion-item>
-  <button ion-button type="submit" block>Give</button>
-  </form>
+    <form (ngSubmit)="saveData()">
+      <ion-item>
+        <ion-label>Amount $</ion-label>
+        <ion-input
+          type="number"
+          (ngModelChange)="sqliteProvider.data.amount=$event"
+          [ngModel]="sqliteProvider.data.amount | number : '1.2-2'"
+          name="amount"
+          required="">
+        </ion-input>
+      </ion-item>
+    <button ion-button type="submit" block>Give</button>
+    </form>
 
-<div class="boxTotal">Box Total ${{ sqliteProvider.boxTotal | number : '1.2-2' }}</div>
-<div class="cover">
-  <img src="assets/imgs/method-draw-image.svg" align="center" style="border:1px solid red;">
-</div>
-<div id="donateWrapper">
-  <button ion-button *ngIf='this.sqliteProvider.boxTotal > 18' (click)="donateBox()">Donate Your Box</button>
-</div>
+  <div class="boxTotal">Box Total ${{ sqliteProvider.boxTotal | number : '1.2-2' }}</div>
+
+  <div id="image-wrapper">
+    <img id="box-image" src="assets/imgs/charity-box-image.svg" height="175">
+  </div>
+
+  <div id="donateWrapper">
+    <button ion-button *ngIf='this.sqliteProvider.boxTotal > 18' (click)="donateBox()">Donate Your Box</button>
+  </div>
+
 </ion-content>
