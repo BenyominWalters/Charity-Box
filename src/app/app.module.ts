@@ -7,6 +7,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { SQLite } from '@ionic-native/sqlite';
 import { Toast } from '@ionic-native/toast';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { IonicStorageModule } from '@ionic/storage';
+
 
 import { MyApp } from './app.component';
 import { BoxPage } from '../pages/box/box';
@@ -33,6 +35,7 @@ import { SqliteProvider } from '../providers/sqlite/sqlite';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [

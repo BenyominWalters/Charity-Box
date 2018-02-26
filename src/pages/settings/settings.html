@@ -16,6 +16,38 @@
 <ion-content padding>
 <p>Settings Page Content Here</p>
 
+<form (ngSubmit)="udateSettings()">
+  <ion-item>
+    <ion-label>Box Minimum</ion-label>
+    <ion-input
+      type="number"
+      [(ngModel)]="boxMinimum"
+      name="boxMinimum"
+      required="">
+    </ion-input>
+  </ion-item>
 
+  <ion-item>
+    <ion-label>Charity Name</ion-label>
+    <ion-input
+      type="text"
+      [(ngModel)]="charityName"
+      name="charityName"
+      required="">
+    </ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Charity Email</ion-label>
+    <ion-input
+      type="text"
+      [(ngModel)]="charityEmail"
+      name="charityEmail"
+      required="">
+    </ion-input>
+  </ion-item>
+
+  <button ion-button type="submit" block>Update Settings</button>
+</form>
 
 </ion-content>

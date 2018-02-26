@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the SettingsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
@@ -15,11 +9,29 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SettingsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public boxMinimuml: string = '&amount=18%2e00'
+  public charityEmail: string = 'info@clhds.com'
+  public charityName: string = 'Cheder Lubavitch'
+
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private storage: Storage) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SettingsPage');
+  }
+
+  udateSettings() {
+    // set a key/value
+  storage.set('boxMinimum', '');
+
+  // Or to get a key/value pair
+  storage.get('age').then((val) => {
+    console.log('Your age is', val);
+  });
   }
 
 }
