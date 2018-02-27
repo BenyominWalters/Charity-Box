@@ -1,9 +1,3 @@
-<!--
-  Generated template for the SettingsPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
@@ -16,12 +10,12 @@
 <ion-content padding>
 <p>Settings Page Content Here</p>
 
-<form (ngSubmit)="udateSettings()">
+<form (ngSubmit)="updateSettings()">
   <ion-item>
     <ion-label>Box Minimum</ion-label>
     <ion-input
       type="number"
-      [(ngModel)]="boxMinimum"
+      [(ngModel)]="sqliteProvider.settingsData.boxMinimum"
       name="boxMinimum"
       required="">
     </ion-input>
@@ -31,7 +25,7 @@
     <ion-label>Charity Name</ion-label>
     <ion-input
       type="text"
-      [(ngModel)]="charityName"
+      [(ngModel)]="sqliteProvider.settingsData.charityName"
       name="charityName"
       required="">
     </ion-input>
@@ -41,7 +35,7 @@
     <ion-label>Charity Email</ion-label>
     <ion-input
       type="text"
-      [(ngModel)]="charityEmail"
+      [(ngModel)]="sqliteProvider.settingsData.charityEmail"
       name="charityEmail"
       required="">
     </ion-input>

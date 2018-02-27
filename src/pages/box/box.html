@@ -50,7 +50,7 @@
       </button>
     </div>
   </div>
-  
+
   <div id="wrapper">
       <button id="clearButton" ion-button block (click)="resetBox()">Clear</button>
   </div>
@@ -78,7 +78,7 @@
   </div>
 
   <div id="donateWrapper">
-    <button ion-button *ngIf='this.sqliteProvider.boxTotal > 18' (click)="donateBox()">Donate Your Box</button>
+    <button ion-button *ngIf='this.sqliteProvider.boxTotal > this.sqliteProvider.settingsData.boxMinimum' (click)="donateBox()">Donate Your Box</button>
   </div>
 
 </ion-content>

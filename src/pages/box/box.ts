@@ -57,7 +57,7 @@ export class BoxPage {
 
     totals() {
       this.sqliteProvider.totals();
-      if (this.sqliteProvider.boxTotal > 18){
+      if (this.sqliteProvider.boxTotal > this.sqliteProvider.settingsData.boxMinimum){
         this.toast.show('Your Box is Full', '5000', 'center').subscribe(
           toast => {
             console.log(toast);
@@ -66,15 +66,18 @@ export class BoxPage {
       }
     }
 
+//this.sqliteProvider.settingsData.boxMinimum
+
     donateBox() {
-      if (this.sqliteProvider.boxTotal > 18){
+      this.navCtrl.push(DonatePage, {donationAmount:this.sqliteProvider.boxTotal});
+      if (this.sqliteProvider.boxTotal > 0){
         this.sqliteProvider.donateBox();
         this.toast.show('Opening Donation Page', '5000', 'center').subscribe(
           toast => {
             console.log(toast);
           }
         );
-        this.navCtrl.push(DonatePage, {amount:18});
+
       }else{
         this.toast.show(`Your Box Isn't Full`, '5000', 'center').subscribe(
           toast => {

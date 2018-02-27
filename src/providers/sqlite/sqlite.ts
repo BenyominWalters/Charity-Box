@@ -5,10 +5,12 @@ import { Injectable } from '@angular/core';
 export class SqliteProvider {
 
     public gifts: any = []; //array of all data pulled from table
-    public data = { id: "", type:"", amount: 0 };
+    public data = { id: "", type: "", amount: 0 };
     public historyTotal = 0;
     public donationTotal = 0;
-    public boxTotal = 0;
+    public boxTotal: any = 0;
+    public settingsData = {boxMinimum: 0, charityEmail: "", charityName: ""};
+    public currentSettings: any = []; //array of current settings from table
 
   constructor(public sqlite: SQLite) {
     console.log('Hello SqliteProvider Provider');
@@ -128,7 +130,7 @@ export class SqliteProvider {
       name: 'data.db',
       location: 'default'
     }).then((db: SQLiteObject) => {
-      db.executeSql('INSERT INTO account VALUES(NULL,"donation",18.00)',{})
+      db.executeSql('INSERT INTO account VALUES(NULL,"donation",round(?,2))', [this.boxTotal])
         .then(res => {
           this.data.amount = 0;
           console.log(res);
@@ -137,9 +139,64 @@ export class SqliteProvider {
           console.log(JSON.stringify(e));
         });
         this.totals();
-    }).catch(e => {
-      console.log(JSON.stringify(e));
+      }).catch(e => {
+        console.log(JSON.stringify(e));
+        });
+  }
+
+  loadSettings(){
+    this.sqlite.create({
+      name: 'data.db',
+      location: 'default'
+    })
+      .then((db: SQLiteObject) => {
+        db.executeSql('CREATE TABLE IF NOT EXISTS settings(id INTEGER NOT NULL PRIMARY KEY, boxMinimum FLOAT(32,2) default 1, charityEmail VARCHAR(16), charityName VARCHAR(16))', {})
+        .catch(e => {
+          console.log(JSON.stringify(e));
+        })
+        .then(res => {
+          db.executeSql('SELECT * FROM settings Where id=1', {})
+          .then(res => {
+            if(res.rows.length === 0){
+              db.executeSql('INSERT INTO settings VALUES(1,18.00,"info@clhds.com","Cheder Lubavitch")',{})
+                .then(res => {
+                  this.data.amount = 0;
+                  console.log(res);
+                });
+            }
+
+          });
+
+        });
+        db.executeSql('SELECT * FROM settings Where id=1', {})
+          .then(res => {
+            this.currentSettings = [];
+              this.currentSettings.push({id:res.rows.item(0).id,boxMinimum:res.rows.item(0).boxMinimum,charityEmail:res.rows.item(0).charityEmail,charityName:res.rows.item(0).charityName})
+
+          })
+          .catch(e => {
+            console.log(JSON.stringify(e));
+          });
       });
+  }
+
+  updateSettings() {
+    this.sqlite.create({
+      name: 'data.db',
+      location: 'default'
+    }).then((db: SQLiteObject) => {
+      db.executeSql('UPDATE settings SET boxMinimum=?, charityEmail=?, charityName=? WHERE id=1',[this.settingsData.boxMinimum, this.settingsData.charityEmail, this.settingsData.charityName])
+        .then(res => {
+          console.log('++++++++++Updated Your Settings');
+          console.log(res);
+        })
+        .catch(e => {
+          console.log(JSON.stringify(e));
+        });
+      }).catch(e => {
+        console.log(JSON.stringify(e));
+        });
+
   }
 
 }
